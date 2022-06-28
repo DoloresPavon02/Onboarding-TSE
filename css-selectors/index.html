@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Css selector</title>
+
+    <style>
+      #buy {
+        color: brown;
+
+      }
+      .primary-button {
+        color: blueviolet;
+      }
+
+      button.primary-button {
+        color: orange;
+      }
+
+      button.primary-button.color-green {
+        color: green;
+        font-weight:bold;
+        text-decoration:underline;
+      }
+
+      section#section-2 .primary-button {
+        color: rgb(227, 34, 217);
+      }
+
+      div#paragraphs :first-child {
+        color: aquamarine;
+      }
+
+      [data-promotion-id] {
+        color: pink;
+      }
+
+      [data-promotion-id="2"] {
+        color: cadetblue;
+      }
+
+      a[href^="misitio.com"] {
+        color: rebeccapurple;
+      }
+
+      div[class^="container"] {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+
+      
+          
+    </script>
+    <section id="section-1">
+      <h1>Parte 1</h1>
+      <a href="otrositio.com/chau">Un Link</a>
+      <button id="buy" class="primary-button">Comprar</button>
+    </section>
+
+    <section id="section-2">
+      <div class="container-big">
+        <p>Some Text</p>
+      </div>
+      <a class="primary-button" href="misitio.com/hola">Link Agregar</a>
+      <div data-promotion-id="1">promo</div>
+      <button id="buy" class="primary-button">Agregar</button>
+      <button class="primary-button color-green">Agregar Verde</button>
+    </section>
+
+    <section id="section-3">
+      <div id="paragraphs" class="container-small">
+        <p>Parrafo 1</p>
+        <p>Parrafo 2</p>
+      </div>
+      <div data-promotion-id="2">promo</div>
+      <a href="misitio.com/chau">Otro Link</a>
+      <button id="buy" class="secondary-button">Continuar</button>
+    </section>
+  </body>
+</html>
