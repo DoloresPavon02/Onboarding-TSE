@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebPages Circles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="center">
+
+    <section class="center">
+
+    
+    <div class="circle center animation" id="unique"></div>
+    <script>
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(";");
+        console.log(document);
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      function getColor() {
+        let visitasClases = ["color-Azul", "color-Rojo"];
+        let number = parseInt(Math.random(3)*10) %2;
+        return [visitasClases[number], number];
+      }
+
+      function showAnimation(dataWeb) {
+        let div = document.getElementById("unique");
+        div.className += " " + dataWeb.colorActual;
+      }
+
+      function showStatus(dataWeb){
+        let p = "<p>";
+        let endP= "</p>";
+        
+        document.write(p+"Veces que haz visitado el sitio: " + dataWeb.visitas + " veces" +endP);
+        document.write(p+"Estas viendo una bola de color: "+dataWeb.colorActual.replace("color-","")+endP);
+        document.write(p+"Haz visto esta bola unas " + dataWeb.visitasClases[dataWeb.indexClas] + " veces" + endP)
+      }
+      let dataWeb = {
+        visitasClases: [0, 0],
+        colorActual: "",
+        visitas: 0,
+        indexClas: 0,
+      };
+
+      let webData = getCookie("webCookie");
+
+      webData = webData != "" ? JSON.parse(webData) : dataWeb;
+
+      if (webData.visitasClases[webData.indexClas] % 3 === 0) {
+        let newColor, newIndex;
+        [newColor, newIndex] = getColor();
+        webData.colorActual = newColor;
+        webData.indexClas = newIndex;
+      }
+      webData.visitasClases[webData.indexClas] += 1;
+      
+      webData.visitas += 1;
+      showAnimation(webData);
+      showStatus(webData);
+      let stringData = JSON.stringify(webData);
+      setCookie("webCookie", stringData, 365);
+      //document.write("<p>" + stringData + "</p>");
+    </script>
+    </section>
+  </body>
+</html>
